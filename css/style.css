@@ -200,19 +200,103 @@
   opacity: 1;
 }
 
-.testimonial-carousel .owl-dots {
-  margin-top: 25px;
-  text-align: center;
+
+/* styles.css */
+.icons-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Crée une disposition en 3 colonnes */
+  gap: 0.5rem; /* Réduit l'espace entre les images */
+  justify-items: center; /* Centre les éléments horizontalement dans les cellules */
+  align-items: end; /* Aligne les éléments en bas des cellules */
+  margin-top: auto; /* Espace en haut du conteneur si utilisé dans un conteneur flex */
+  margin-bottom: 1rem; /* Espace en bas du conteneur */
 }
 
-.testimonial-carousel .owl-dot {
-  display: inline-block;
-  margin: 0 5px;
-  width: 15px;
-  height: 15px;
-  background: var(--light);
+.icons-container img {
+  width: 30px; /* Réduit la largeur des images à 30px */
+  height: auto; /* Maintient le ratio d'aspect */
 }
 
-.testimonial-carousel .owl-dot.active {
-  background: var(--primary);
+/* Adaptation pour les petits écrans */
+@media (max-width: 600px) {
+  .icons-container {
+    grid-template-columns: repeat(2, 1fr); /* Passe à une disposition en 2 colonnes pour les écrans plus petits */
+  }
 }
+/* styles.css */
+.icons-container {
+  display: flex;
+  justify-content: center; /* Centre les icônes horizontalement */
+  flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
+  gap: 40px; /* Ajoute de l'espacement entre les icônes */
+}
+
+@keyframes rotateWithPauseClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(180deg); /* Rotation jusqu'à 180° */
+  }
+  50% {
+    transform: rotate(180deg); /* Pause à 180° */
+  }
+  90% {
+    transform: rotate(360deg); /* Rotation complète */
+  }
+  100% {
+    transform: rotate(360deg); /* Pause à 360° */
+  }
+}
+
+@keyframes rotateWithPauseCounterClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-180deg); /* Rotation jusqu'à -180° */
+  }
+  50% {
+    transform: rotate(-180deg); /* Pause à -180° */
+  }
+  90% {
+    transform: rotate(-360deg); /* Rotation complète inverse */
+  }
+  100% {
+    transform: rotate(-360deg); /* Pause à -360° */
+  }
+}
+
+.icons-container img {
+  width: 30px; /* Taille de l'icône à l'intérieur du cercle */
+  height: 30px; /* Taille de l'icône à l'intérieur du cercle */
+  border-radius: 50%; /* Crée un effet circulaire */
+  background-color: #f0f0f0; /* Arrière-plan du cercle */
+  padding: 3px; /* Espace à l'intérieur du cercle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre subtile */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation au survol */
+  cursor: pointer; /* Change le curseur en pointeur */
+  flex-basis: calc(10% - 10px); /* Chaque icône prend 50% de la largeur moins l'écart */
+}
+
+/* Appliquer différentes animations avec des pauses aux icônes */
+.icons-container img:nth-child(odd) {
+  animation: rotateWithPauseClockwise 6s infinite ease-in-out; /* Rotation avec pause dans le sens horaire */
+}
+
+.icons-container img:nth-child(even) {
+  animation: rotateWithPauseCounterClockwise 8s infinite ease-in-out; /* Rotation avec pause dans le sens antihoraire */
+}
+
+.icons-container img:hover {
+  transform: scale(1.1); /* Légèrement agrandir au survol */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
+}
+
+/* Adaptation pour les petits écrans */
+@media (max-width: 600px) {
+  .icons-container img {
+    flex-basis: calc(10% - 10px); /* Ajustement pour les petits écrans */
+  }
+}
+
